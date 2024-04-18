@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>To embed SVG image:</p>
+    <a id="svgLink" aria-label="Chat on WhatsApp" href="#"> <img id="svgImage" alt="Chat on WhatsApp"
+            src="" />
+    </a>
+    <br><br>
+    <p>To embed PNG image:</p>
+    <a id="pngLink" aria-label="Chat on WhatsApp" href="#"> <img id="pngImage" alt="Chat on WhatsApp"
+            src="" />
+    </a>
+    <br><br>
+
+    <script>
+        // Function to set WhatsApp text message dynamically
+        function setWhatsAppTextMessage(number, message, image, link) {
+            var messageWithImageAndLink = encodeURIComponent(message + "\n\n" + image + "\n" + link);
+            var whatsappLink = "https://wa.me/" + number + "?text=" + messageWithImageAndLink;
+            return whatsappLink;
+        }
+
+        // Function to set image dynamically
+        function setWhatsAppImage(imageElement, imagePath) {
+            imageElement.src = imagePath;
+        }
+
+        // Example usage:
+        var svgLink = document.getElementById("svgLink");
+        var svgImage = document.getElementById("svgImage");
+        var pngLink = document.getElementById("pngLink");
+        var pngImage = document.getElementById("pngImage");
+
+        var svgNumber = "919500912258"; // WhatsApp number for SVG
+        var pngNumber = "919047243615"; // WhatsApp number for PNG
+        var message = "Hello there!"; // Text message
+        var svgImagePath = "WhatsAppButtonGreenLarge.svg"; // SVG image path
+        var pngImagePath = "WhatsAppButtonGreenLarge.png"; // PNG image path
+        var svgLinkHref = "https://www.free-css.com/free-css-templates"; // SVG link
+        var pngLinkHref = "https://www.free-css.com/free-css-templates"; // PNG link
+
+        // Set href attribute of SVG link
+        svgLink.href = setWhatsAppTextMessage(svgNumber, message, svgImagePath, svgLinkHref);
+        // Set src attribute of SVG image
+        setWhatsAppImage(svgImage, svgImagePath);
+
+        // Set href attribute of PNG link
+        pngLink.href = setWhatsAppTextMessage(pngNumber, message, pngImagePath, pngLinkHref);
+        // Set src attribute of PNG image
+        setWhatsAppImage(pngImage, pngImagePath);
+    </script>
+</body>
+
+</html>
